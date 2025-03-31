@@ -1,7 +1,7 @@
 // ✅ Firebase SDK Import
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
-
+const apiKey = process.env.GOOGLE_API_KEY;
 // ✅ Firebase Configuration (Firebase Project मधून कॉपी कर)
 const firebaseConfig = {
     apiKey: "AIzaSyCd7Q_rV1gANEKtOMVE4WneOEi3AdT4aeU",
