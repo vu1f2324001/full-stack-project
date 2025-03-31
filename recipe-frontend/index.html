@@ -17,6 +17,7 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="login.html">Login</a></li>
                 <li><a href="register.html">Register</a></li>
+                <li onclick="toggleDarkMode()">🌙 Dark Mode</li> 
             </ul>
         </nav>
     </header>
@@ -29,16 +30,28 @@
 
     <section id="recipes">
         <h2>Popular Recipes</h2>
+        <input type="text" id="search" placeholder="Search recipes..." onkeyup="searchRecipes()">
         <div class="recipe-card">
             <img src="assest/a.jpeg" alt="Healthy Bowl">
             <h3>Spaghetti Carbonara</h3>
             <p>A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.</p>
+            <button class="fav-btn" onclick="addToFavorites('Spaghetti Carbonara')">❤️ Add to Favorites</button>
         </div>
         <div class="recipe-card">
-            <img src="assest/RECI2.jpEg" alt="Paneer Butter Masala">
+            <img src="assest/RECI2.jpeg" alt="Paneer Butter Masala">
             <h3>Paneer Butter Masala</h3>
             <p>Creamy and rich paneer dish with a perfect blend of spices.</p>
+            <button class="fav-btn" onclick="addToFavorites('Paneer Butter Masala')">❤️ Add to Favorites</button>
         </div>
+    </section>
+
+    <section id="upload-recipe">
+        <h2>Share Your Recipe</h2>
+        <form id="recipeForm">
+            <input type="text" id="recipeName" placeholder="Recipe Name" required>
+            <textarea id="recipeDesc" placeholder="Recipe Description" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
     </section>
 
     <section id="about">
@@ -56,5 +69,6 @@
         </form>
     </section>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
