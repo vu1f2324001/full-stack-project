@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Image Upload</title>
+</head>
+<body><h2>Upload Image to Firebase</h2>
+<form id="uploadForm">
+    <input type="file" id="fileInput" required />
+    <button type="submit">Upload</button>
+</form>
+<img id="uploadedImage" src="" alt="Uploaded Image" style="display:none; width:200px; height:auto;">
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-storage.js";
+
+    // **🔥 तुझ्या Firebase Project ची Configuration (यात तुझे details टाक)**
+    const firebaseConfig = {
+        apiKey: "तुझं_API_KEY",
+        authDomain: "तुझं_PROJECT_ID.firebaseapp.com",
+        projectId: "तुझं_PROJECT_ID",
+        storageBucket: "तुझं_PROJECT_ID.appspot.com",
+        messagingSenderId: "तुझं_SENDER_ID",
+        appId: "तुझं_APP_ID"
+    };
+
+    // **🔥 Firebase Initialize**
+    const app = initializeApp(firebaseConfig);
+    const storage = getStorage(app);
+
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const file = document.getElementById("fileInput").files[0];
+
+        if (!file) {
+            alert("कृपया फोटो निवडा!");
+            return;
+        }
+
+        // **🔥 Firebase Storage मध्ये फोटो Upload करणे**
+        const storageRef = ref(storage, `images/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on("state_changed",
+            (snapshot) => {
+                console.log("Uploading...");
+            },
+            (error) => {
+                console.error("Upload Error:", error);
+            },
+            async () => {
+                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                console.log("✅ Image Uploaded Successfully!");
+                console.log("📷 Image URL:", downloadURL);
+                alert("Image Uploaded Successfully!");
+            }
+        );
+    });
+    uploadTask.on("state_changed",
+    (snapshot) => {
+        console.log("Uploading...");
+    },
+    (error) => {
+        console.error("Upload Error:", error);
+    },
+    async () => {
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        console.log("📷 Image URL:", downloadURL);
+
+        // ✅ फोटो पेजवर दाखवायचा
+        document.getElementById("uploadedImage").src = downloadURL;
+        document.getElementById("uploadedImage").style.display = "block";
+    }
+);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Management - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Recipe Management Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#my-recipes">My Recipes</a></li>
+                <li><a href="#add-recipe">Add New Recipe</a></li>
+                <li><a href="login.html" id="logoutBtn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Dashboard Content -->
+    <section id="home" class="dashboard-home">
+        <h2>Welcome to your Dashboard!</h2>
+        <p>Manage your recipes and profile.</p>
+    </section>
+
+    <!-- My Recipes Section -->
+    <section id="my-recipes">
+        <h2>My Recipes</h2>
+        <div class="recipe-card">
+            <img src="assest/a.jpeg" alt="Recipe 1">
+            <h3>Spaghetti Carbonara</h3>
+            <p>A famous Italian pasta dish.</p>
+            <a href="recipe-detail.html" class="button">Read More</a>
+        </div>
+        <div class="recipe-card">
+            <img src="assest/RECI2.jpeg" alt="Recipe 2">
+            <h3>Paneer Butter Masala</h3>
+            <p>A creamy and spicy paneer dish.</p>
+            <a href="recipe-detail.html" class="button">Read More</a>
+        </div>
+    </section>
+
+    <!-- Add Recipe Section -->
+    <section id="add-recipe">
+        <h2>Add New Recipe</h2>
+        <form id="addRecipeForm">
+            <input type="text" name="recipeName" placeholder="Recipe Name" required>
+            <textarea name="recipeDescription" placeholder="Recipe Description" required></textarea>
+            <input type="file" id="fileInput" name="recipeImage" accept="image/*,video/*" required>
+            <button type="submit">Add Recipe</button>
+        </form>
+        <img id="uploadedImage" src="" alt="Uploaded Recipe Image" style="display:none; width: 200px; margin-top: 10px;">
+    </section>
+
+    <script type="module" src="js/dashboard.js"></script>
+
+</body>
+</html>
