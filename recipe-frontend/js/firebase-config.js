@@ -4,7 +4,7 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-
 const apiKey = process.env.GOOGLE_API_KEY;
 // ✅ Firebase Configuration (Firebase Project मधून कॉपी कर)
 const firebaseConfig = {
-    apiKey: "AIzaSyCd7Q_rV1gANEKtOMVE4WneOEi3AdT4aeU",
+    apiKey: "AIzaSyDCkALps8XjcUg_kB4GqVcJVWju1VsmHCg",
     authDomain: "recipe-cc30c",
     projectId: "recipe-cc30c",
     storageBucket: "recipe-cc30c",
